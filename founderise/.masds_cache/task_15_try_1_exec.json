@@ -1,0 +1,1 @@
+{"success": false, "stdout": "Installing Jest...\n", "stderr": "npm error Tracker \"idealTree\" already exists\nnpm error A complete log of this run can be found in: /home/userland/.npm/_logs/2025-07-28T17_19_47_930Z-debug-0.log\n"}

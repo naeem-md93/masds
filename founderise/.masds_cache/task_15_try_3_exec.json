@@ -1,0 +1,1 @@
+{"success": false, "stdout": "\nremoved 276 packages in 7s\n\n38 packages are looking for funding\n  run `npm fund` for details\n", "stderr": "Script timed out after 30 seconds."}

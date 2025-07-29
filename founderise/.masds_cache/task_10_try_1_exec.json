@@ -1,0 +1,1 @@
+{"success": true, "stdout": "Branch b11/frontend-api-integration already exists, checking it out...\nUpdating src/frontend/pages/ConversationPage.js with LLM integration...\n\u2705 Task complete.\n", "stderr": "Already on 'b11/frontend-api-integration'\n"}

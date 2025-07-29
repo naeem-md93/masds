@@ -1,0 +1,46 @@
+// Import required dependencies
+const express = require('express');
+
+// Create a new router instance
+const router = express.Router();
+
+// In-memory storage for personas (temporary for development purposes)
+const personas = [];
+
+// POST endpoint to create a persona
+router.post('/personas', (req, res) => {
+    const { name, role, description } = req.body;
+
+    // Validate the request body
+    if (!name || !role || !description) {
+        return res.status(400).json({ error: 'Missing required fields: name, role, description' });
+    }
+
+    // Add the persona to the in-memory list
+    const newPersona = { id: personas.length + 1, name, role, description };
+    personas.push(newPersona);
+
+    // Respond with the created persona
+    return res.status(201).json({ message: 'Persona created successfully', data: newPersona });
+});
+
+// DELETE endpoint to delete a persona by ID
+router.delete('/personas/:id', (req, res) => {
+    const { id } = req.params;
+
+    // Find the persona index to remove
+    const index = personas.findIndex(persona => persona.id === parseInt(id, 10));
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'Persona not found' });
+    }
+
+    // Remove the persona from the list
+    personas.splice(index, 1);
+
+    // Respond with a success message
+    return res.status(200).json({ message: 'Persona deleted successfully' });
+});
+
+// Export the router
+module.exports = router;

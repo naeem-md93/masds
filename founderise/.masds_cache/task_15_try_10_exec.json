@@ -1,0 +1,1 @@
+{"success": false, "stdout": "Cleaning npm cache...\nRemoving existing node_modules and package-lock.json...\nInstalling dependencies...\n\nadded 209 packages in 16s\nInstalling Jest and supertest as dev dependencies...\n", "stderr": "Script timed out after 30 seconds."}

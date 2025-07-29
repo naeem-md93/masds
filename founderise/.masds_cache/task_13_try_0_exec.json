@@ -1,0 +1,1 @@
+{"success": true, "stdout": "\nadded 111 packages, and audited 210 packages in 20s\n\n38 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n\u2705 UserModel.js has been created successfully.\n", "stderr": ""}

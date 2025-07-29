@@ -1,0 +1,1 @@
+{"success": false, "stdout": "\nchanged 374 packages, and audited 486 packages in 26s\n\n72 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n", "stderr": "Script timed out after 30 seconds."}

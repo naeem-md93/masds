@@ -1,0 +1,1 @@
+{"success": false, "stdout": "\nremoved 276 packages, and audited 210 packages in 7s\n\n38 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\nRunning Jest tests...\nNeed to install the following packages:\njest@30.0.5\nOk to proceed? (y) ", "stderr": "Script timed out after 30 seconds."}
