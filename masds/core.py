@@ -1,24 +1,26 @@
 import os
 import subprocess
-
-from .graph import build_graph
-
-
-def init_project(project_dir: str):
-    os.makedirs("./.masds_cache", exist_ok=True)
-    os.makedirs(project_dir, exist_ok=True)
-    os.chdir(os.path.join(os.getcwd(), project_dir))
-    subprocess.call(["git", "init"])
-    subprocess.call(["git", "config", "--global", "init.defaultBranch", "main"])
+from .agents.prd_agent import write_a_prd
+from .agents.index_agent import index_a_project
+from .agents.decompose_agent import decompose_a_project
+from .agents.orchestrator_agent import orchestrate_a_project
+from . import utils
 
 
-def build_project(project_dir: str, project_description: str) -> None:
-    init_project(project_dir)
+def develop_a_project(project_dir: str, project_desc: str) -> None:
+    subprocess.call(["mkdir", project_dir])
+    os.chdir(project_dir)
 
-    executor = build_graph()
+    subprocess.call(["mkdir", ".masds_cache"])
 
-    initial_state = {"description": project_description}
+    prd = write_a_prd(project_desc)
+    utils.write_json_file("./.masds_cache/prd.json", prd)
+    # prd = utils.read_json_file("../prd.json")
 
-    final_state = executor.invoke(initial_state)
+    db = index_a_project("./")
+    utils.write_json_file("./.masds_cache/db.json", db)
 
-    return final_state
+    tasks = decompose_a_project(prd=prd["prd"], db=db)
+    utils.write_json_file("./.masds_cache/tasks.json", tasks)
+
+    orchestrate_a_project(prd=prd["prd"], db=db, tasks=tasks["tasks"])
